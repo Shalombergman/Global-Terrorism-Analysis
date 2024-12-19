@@ -40,7 +40,7 @@ def run_etl():
                     if_exists='append',
                     index=False,
                     method='multi',
-                    chunksize=1000
+                    chunksize=5000
                 )
     
     print("ETL process completed!")
