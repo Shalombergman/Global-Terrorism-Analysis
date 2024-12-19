@@ -11,7 +11,7 @@ def clean_terrorism_data(df):
         'target1', 'summary', 'gname',
         'targtype1_txt', 'weaptype1_txt',
         'motive',
-        'success', 'nperps'
+        'nperps'
     ]].copy()
     
     column_mapping = {
@@ -31,7 +31,6 @@ def clean_terrorism_data(df):
         'gname': 'Group',
         'summary': 'Summary',
         'motive': 'Motive',
-        'success': 'Success',
         'nperps': 'Nperps',
         'targtype1_txt': 'Target_type',
         'weaptype1_txt': 'Weapon_type'
@@ -40,6 +39,12 @@ def clean_terrorism_data(df):
     numeric_columns = ['Killed', 'Wounded', 'Nperps']
     for col in numeric_columns:
         cleaned_df.loc[cleaned_df[col] < 0, col] = np.nan
+    text_columns = ['Country', 'Region', 'State', 'City', 'AttackType', 
+                   'Target', 'Group', 'Summary', 'Motive', 'Target_type', 'Weapon_type']
+    for col in text_columns:
+        cleaned_df[col] = cleaned_df[col].fillna('Unknown')
+    
+
     
     return cleaned_df
 
