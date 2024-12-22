@@ -19,7 +19,6 @@ class PostgresClient:
                   if_exists='replace', index=False)
     
     def execute_query(self, query: str) -> pd.DataFrame:
-        """הרצת שאילתא וקבלת תוצאות כ-DataFrame"""
         if not self.engine:
             self.connect()
         return pd.read_sql(query, self.engine) 

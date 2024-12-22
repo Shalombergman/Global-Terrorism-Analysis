@@ -8,5 +8,4 @@ from src.db.models.terror_events import TerrorEvent
 from src.db.models.weapon_types import WeaponType
 
 def init_db(engine):
-    # יצירת כל הטבלאות
     Base.metadata.create_all(bind=engine)
