@@ -91,7 +91,7 @@ class DataTransformer:
             num_perpetrators = int(row['Nperps']) if not np.isnan(row['Nperps']) else None
             
             event = TerrorEvent(
-                event_id=str(row['eventid']),  # המרה למחרוזת
+                event_id=str(row['eventid']),
                 date=f"{row['Year']}-{month}-{day}",
                 region_id=region_map.get((row['Region'], row['Country'], row['State'], row['City'])),
                 group_id=group_map.get(row['Group']),
