@@ -4,6 +4,21 @@ from src.db.models.attack_types import AttackType
 from src.db.models.groups import Group
 from src.db.models.regions import Region
 from src.db.models.terror_events import TerrorEvent
+from src.data_etl.analysis.visualizations.map_utils import (
+    create_severity_map,
+    create_active_groups_map,
+    create_correlation_map
+)
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class RegionStats:
+    name: str
+    latitude: float
+    longitude: float
+    total_attacks: int
+    avg_severity_score_per_event: float
 
 def get_top_attack_types(session, limit=None) -> list:
     query = (
@@ -26,6 +41,21 @@ def get_top_attack_types(session, limit=None) -> list:
 
 
 def get_region_severity_stats(session, limit=None):
+    REGION_COORDINATES = {
+        'East Asia': (35.8617, 104.1954),
+        'Sub-Saharan Africa': (-8.7832, 34.5085),
+        'Middle East & North Africa': (26.8206, 30.8025),
+        'North America': (40.7128, -74.0060),      #
+        'South Asia': (20.5937, 78.9629),
+        'Central Asia': (41.2044, 74.7661),
+        'Central America & Caribbean': (15.7835, -90.2308),
+        'Eastern Europe': (50.4501, 30.5234),
+        'Southeast Asia': (13.7563, 100.5018),
+        'South America': (-15.7975, -47.8919),
+        'Australasia & Oceania': (-25.2744, 133.7751),
+        'Western Europe': (48.8566, 2.3522)
+    }
+
     severity_score = (func.coalesce(TerrorEvent.killed, 0) * 2 + 
                      func.coalesce(TerrorEvent.wounded, 0))
     
@@ -43,7 +73,18 @@ def get_region_severity_stats(session, limit=None):
     if limit:
         query = query.limit(limit)
 
-    return query.all()
+    results = []
+    for r in query.all():
+        lat, lng = REGION_COORDINATES.get(r.name, (None, None))
+        results.append(RegionStats(
+            name=r.name,
+            latitude=lat,
+            longitude=lng,
+            total_attacks=r.total_attacks,
+            avg_severity_score_per_event=r.avg_severity_score_per_event
+        ))
+
+    return results
 
 def get_deadliest_groups(session, limit=5):
     severity_score = (func.coalesce(TerrorEvent.killed, 0) * 2 + 
@@ -63,26 +104,34 @@ def get_deadliest_groups(session, limit=5):
     
     return query.all()
 def get_most_active_groups_by_region(session, region_name=None, limit=5):
+    REGION_COORDINATES = {
+        'East Asia': (35.8617, 104.1954),
+        'Sub-Saharan Africa': (-8.7832, 34.5085),
+        'Middle East & North Africa': (26.8206, 30.8025),
+        'North America': (40.7128, -74.0060),
+        'South Asia': (20.5937, 78.9629),
+        'Central Asia': (41.2044, 74.7661),
+        'Central America & Caribbean': (15.7835, -90.2308),
+        'Eastern Europe': (50.4501, 30.5234),
+        'Southeast Asia': (13.7563, 100.5018),
+        'South America': (-15.7975, -47.8919),
+        'Australasia & Oceania': (-25.2744, 133.7751),
+        'Western Europe': (48.8566, 2.3522)
+    }
+
     query = (
         session.query(
             Region.name.label('region_name'),
             Group.name.label('group_name'),
-            func.count(TerrorEvent.event_id).label('attack_count'),
-            func.max(Region.latitude).label('latitude'),
-            func.max(Region.longitude).label('longitude'),
-            func.sum(TerrorEvent.killed).label('total_killed'),
-            func.sum(TerrorEvent.wounded).label('total_wounded')
+            func.count(TerrorEvent.event_id).label('attack_count')
         )
-        .join(TerrorEvent, Region.events)  # שינוי סדר ה-joins
+        .join(TerrorEvent, Region.events)
         .join(Group, TerrorEvent.group)
         .filter(
             Group.id.isnot(None),
-            Group.name != 'Unknown',
-            Region.latitude.isnot(None),
-            Region.longitude.isnot(None)
+            Group.name != 'Unknown'
         )
         .group_by(Region.name, Group.name)
-        .having(func.count(TerrorEvent.event_id) >= 5)
         .order_by(Region.name, desc('attack_count'))
     )
 
@@ -91,9 +140,10 @@ def get_most_active_groups_by_region(session, region_name=None, limit=5):
     grouped_results = {}
     for r in results:
         if r.region_name not in grouped_results:
+            lat, lng = REGION_COORDINATES.get(r.region_name, (None, None))
             grouped_results[r.region_name] = {
                 'top_groups': [],
-                'location': {'lat': r.latitude, 'lng': r.longitude}
+                'location': {'lat': lat, 'lng': lng}
             }
         if len(grouped_results[r.region_name]['top_groups']) < limit:
             grouped_results[r.region_name]['top_groups'].append({
@@ -214,12 +264,22 @@ if __name__ == "__main__":
 
     
 
-    # groups_results = get_most_active_groups_by_region(session)
-    # groups_map = map_manager.create_active_groups_map(groups_results)
-    # groups_map.save('active_groups_map.html')
-
-    # correlation_results = get_region_correlation_stats(session)
-    # correlation_map = map_manager.create_correlation_map(correlation_results)
-    # correlation_map.save('correlation_map.html')
-
+    print("\nCreating maps...")
+    
+    # מפת חומרה
+    severity_results = get_region_severity_stats(session)
+    severity_map = create_severity_map(severity_results)
+    severity_map.save('severity_map.html')
+    print("Severity map saved as 'severity_map.html'")
+    
+    groups_results = get_most_active_groups_by_region(session)
+    groups_map = create_active_groups_map(groups_results)
+    groups_map.save('active_groups_map.html')
+    print("Active groups map saved as 'active_groups_map.html'")
+    
+    correlation_results = get_region_correlation_stats(session)
+    correlation_map = create_correlation_map(correlation_results)
+    correlation_map.save('correlation_map.html')
+    print("Correlation map saved as 'correlation_map.html'")
+    
     session.close()
