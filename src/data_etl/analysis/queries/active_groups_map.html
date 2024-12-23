@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_661e913f5a009e8a3bf532e8fe971bdb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_661e913f5a009e8a3bf532e8fe971bdb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_661e913f5a009e8a3bf532e8fe971bdb = L.map(
+                "map_661e913f5a009e8a3bf532e8fe971bdb",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b3037c43418a248239eeacffceb42b1f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b3037c43418a248239eeacffceb42b1f.addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var marker_8a30da6cd545b8a54f3d68bf18985786 = L.marker(
+                [-25.2744, 133.7751],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_6174b03d6f3e3ec924fb7c61d37d283c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8a30da6cd545b8a54f3d68bf18985786.setIcon(icon_6174b03d6f3e3ec924fb7c61d37d283c);
+        
+    
+        var popup_c54b55ff4a7c4a94d3b8a24c90b0178b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_374ad9e5293c725e57d65543623e8309 = $(`<div id="html_374ad9e5293c725e57d65543623e8309" style="width: 100.0%; height: 100.0%;"><b>Australasia & Oceania</b><br>Top Groups:<br>- Bougainville Revolutionary Army (BRA): 28 attacks<br>- Jihadi-inspired extremists: 6 attacks<br>- Kanak Socialist National Liberation Front: 5 attacks<br>- Black September: 5 attacks<br>- Anti-Nuclear extremists: 4 attacks<br></div>`)[0];
+                popup_c54b55ff4a7c4a94d3b8a24c90b0178b.setContent(html_374ad9e5293c725e57d65543623e8309);
+            
+        
+
+        marker_8a30da6cd545b8a54f3d68bf18985786.bindPopup(popup_c54b55ff4a7c4a94d3b8a24c90b0178b)
+        ;
+
+        
+    
+    
+            var marker_58217b50542f8c159ee8d3f0dc3bcfd8 = L.marker(
+                [15.7835, -90.2308],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_74c8a79fab405e5144a32cf2e70cfb12 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_58217b50542f8c159ee8d3f0dc3bcfd8.setIcon(icon_74c8a79fab405e5144a32cf2e70cfb12);
+        
+    
+        var popup_f4811e293e02890542e2a870f6e43d8a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb1e6aecec411b0b003375afd1c226bd = $(`<div id="html_bb1e6aecec411b0b003375afd1c226bd" style="width: 100.0%; height: 100.0%;"><b>Central America & Caribbean</b><br>Top Groups:<br>- Farabundo Marti National Liberation Front (FMLN): 3351 attacks<br>- Nicaraguan Democratic Force (FDN): 894 attacks<br>- Nicaraguan Resistance: 231 attacks<br>- Sandinista National Liberation Front (FSLN): 209 attacks<br>- People's Liberation Forces (FPL): 167 attacks<br></div>`)[0];
+                popup_f4811e293e02890542e2a870f6e43d8a.setContent(html_bb1e6aecec411b0b003375afd1c226bd);
+            
+        
+
+        marker_58217b50542f8c159ee8d3f0dc3bcfd8.bindPopup(popup_f4811e293e02890542e2a870f6e43d8a)
+        ;
+
+        
+    
+    
+            var marker_896b25bc80b9157aed4921004d8ed891 = L.marker(
+                [41.2044, 74.7661],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_ac166cb98ace18d8505b3c99faf40c4c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_896b25bc80b9157aed4921004d8ed891.setIcon(icon_ac166cb98ace18d8505b3c99faf40c4c);
+        
+    
+        var popup_2a3c84dea06a71bf1d5cbfdbf95f644c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a58c8d54c3f1e9e788d0b38290543a2b = $(`<div id="html_a58c8d54c3f1e9e788d0b38290543a2b" style="width: 100.0%; height: 100.0%;"><b>Central Asia</b><br>Top Groups:<br>- Supporters of Ex-President Gamsakhurdial: 10 attacks<br>- South Ossetian Separatists: 10 attacks<br>- Azerbaijan Guerrillas: 7 attacks<br>- Gunmen: 6 attacks<br>- Abkhazian Separatists: 5 attacks<br></div>`)[0];
+                popup_2a3c84dea06a71bf1d5cbfdbf95f644c.setContent(html_a58c8d54c3f1e9e788d0b38290543a2b);
+            
+        
+
+        marker_896b25bc80b9157aed4921004d8ed891.bindPopup(popup_2a3c84dea06a71bf1d5cbfdbf95f644c)
+        ;
+
+        
+    
+    
+            var marker_e83fee8457e054ba2d0453fc09e3206f = L.marker(
+                [35.8617, 104.1954],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_0ca62d628dd7b9785c1475ed8e3e5272 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e83fee8457e054ba2d0453fc09e3206f.setIcon(icon_0ca62d628dd7b9785c1475ed8e3e5272);
+        
+    
+        var popup_0ae9dad767331f1e73c3e9e8f30c9cf3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_229a2a7a64798c04ae4e321aac0251ce = $(`<div id="html_229a2a7a64798c04ae4e321aac0251ce" style="width: 100.0%; height: 100.0%;"><b>East Asia</b><br>Top Groups:<br>- Uighur Separatists: 86 attacks<br>- Chukakuha (Middle Core Faction): 61 attacks<br>- Revolutionary Workers' Council (Kakurokyo): 25 attacks<br>- East Asia Anti Japanese Armed Front: 12 attacks<br>- Anti-Nuclear extremists: 9 attacks<br></div>`)[0];
+                popup_0ae9dad767331f1e73c3e9e8f30c9cf3.setContent(html_229a2a7a64798c04ae4e321aac0251ce);
+            
+        
+
+        marker_e83fee8457e054ba2d0453fc09e3206f.bindPopup(popup_0ae9dad767331f1e73c3e9e8f30c9cf3)
+        ;
+
+        
+    
+    
+            var marker_7f1a4f2bf9a728dea0b492cbd347b246 = L.marker(
+                [50.4501, 30.5234],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_8638c673445b047ecb01c4e086183aca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7f1a4f2bf9a728dea0b492cbd347b246.setIcon(icon_8638c673445b047ecb01c4e086183aca);
+        
+    
+        var popup_e0c8def1a991184b84645e75b34d901a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb748ccf99c8e5b43769a11dac40c143 = $(`<div id="html_fb748ccf99c8e5b43769a11dac40c143" style="width: 100.0%; height: 100.0%;"><b>Eastern Europe</b><br>Top Groups:<br>- Donetsk People's Republic: 624 attacks<br>- Chechen Rebels: 322 attacks<br>- Luhansk People's Republic: 209 attacks<br>- Kosovo Liberation Army (KLA): 58 attacks<br>- Albanian extremists: 47 attacks<br></div>`)[0];
+                popup_e0c8def1a991184b84645e75b34d901a.setContent(html_fb748ccf99c8e5b43769a11dac40c143);
+            
+        
+
+        marker_7f1a4f2bf9a728dea0b492cbd347b246.bindPopup(popup_e0c8def1a991184b84645e75b34d901a)
+        ;
+
+        
+    
+    
+            var marker_0916ac23d74583d8c4e3003e6d1c63b0 = L.marker(
+                [26.8206, 30.8025],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_bea343cc7dda8ef6cb5cd9b7a7156cce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0916ac23d74583d8c4e3003e6d1c63b0.setIcon(icon_bea343cc7dda8ef6cb5cd9b7a7156cce);
+        
+    
+        var popup_c7ed05c541e6f723e6385a81d6b284f1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fefa65b75edd14765bcd63b1a3a5243f = $(`<div id="html_fefa65b75edd14765bcd63b1a3a5243f" style="width: 100.0%; height: 100.0%;"><b>Middle East & North Africa</b><br>Top Groups:<br>- Islamic State of Iraq and the Levant (ISIL): 5563 attacks<br>- Kurdistan Workers' Party (PKK): 2137 attacks<br>- Palestinians: 1105 attacks<br>- Houthi extremists (Ansar Allah): 1062 attacks<br>- Al-Qaida in the Arabian Peninsula (AQAP): 1017 attacks<br></div>`)[0];
+                popup_c7ed05c541e6f723e6385a81d6b284f1.setContent(html_fefa65b75edd14765bcd63b1a3a5243f);
+            
+        
+
+        marker_0916ac23d74583d8c4e3003e6d1c63b0.bindPopup(popup_c7ed05c541e6f723e6385a81d6b284f1)
+        ;
+
+        
+    
+    
+            var marker_5b3cdaf11bb4907ac30d4f4eab1dd196 = L.marker(
+                [40.7128, -74.006],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_0b151a2655b9bfca08f6ec9ce81d635a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5b3cdaf11bb4907ac30d4f4eab1dd196.setIcon(icon_0b151a2655b9bfca08f6ec9ce81d635a);
+        
+    
+        var popup_3a403dc66fe83bfe3ebb6746ab427569 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4843eac793681f2d7a63d31948062c97 = $(`<div id="html_4843eac793681f2d7a63d31948062c97" style="width: 100.0%; height: 100.0%;"><b>North America</b><br>Top Groups:<br>- Anti-Abortion extremists: 196 attacks<br>- Left-Wing Militants: 169 attacks<br>- Fuerzas Armadas de Liberacion Nacional (FALN): 120 attacks<br>- White extremists: 87 attacks<br>- New World Liberation Front (NWLF): 86 attacks<br></div>`)[0];
+                popup_3a403dc66fe83bfe3ebb6746ab427569.setContent(html_4843eac793681f2d7a63d31948062c97);
+            
+        
+
+        marker_5b3cdaf11bb4907ac30d4f4eab1dd196.bindPopup(popup_3a403dc66fe83bfe3ebb6746ab427569)
+        ;
+
+        
+    
+    
+            var marker_424b7468764721d67ee410611c5feadb = L.marker(
+                [-15.7975, -47.8919],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_ed89cd5307901388fec2ceba7ef0740d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_424b7468764721d67ee410611c5feadb.setIcon(icon_ed89cd5307901388fec2ceba7ef0740d);
+        
+    
+        var popup_5268fbe90ae58a0ba2023775797062d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fdda76776e3764fd264472306f715240 = $(`<div id="html_fdda76776e3764fd264472306f715240" style="width: 100.0%; height: 100.0%;"><b>South America</b><br>Top Groups:<br>- Shining Path (SL): 4554 attacks<br>- Revolutionary Armed Forces of Colombia (FARC): 2484 attacks<br>- National Liberation Army of Colombia (ELN): 1561 attacks<br>- Manuel Rodriguez Patriotic Front (FPMR): 830 attacks<br>- Tupac Amaru Revolutionary Movement (MRTA): 557 attacks<br></div>`)[0];
+                popup_5268fbe90ae58a0ba2023775797062d9.setContent(html_fdda76776e3764fd264472306f715240);
+            
+        
+
+        marker_424b7468764721d67ee410611c5feadb.bindPopup(popup_5268fbe90ae58a0ba2023775797062d9)
+        ;
+
+        
+    
+    
+            var marker_0309928ea5aa3bbe1d006bfec5db7aca = L.marker(
+                [20.5937, 78.9629],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_4a12f6328079a568817bf965f7b16b92 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0309928ea5aa3bbe1d006bfec5db7aca.setIcon(icon_4a12f6328079a568817bf965f7b16b92);
+        
+    
+        var popup_ce79d3ef58987fe3153a0e65ce28017f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c338f371f8eb8d8c5c86358c5fcfebf = $(`<div id="html_7c338f371f8eb8d8c5c86358c5fcfebf" style="width: 100.0%; height: 100.0%;"><b>South Asia</b><br>Top Groups:<br>- Taliban: 7477 attacks<br>- Communist Party of India - Maoist (CPI-Maoist): 1878 attacks<br>- Maoists: 1625 attacks<br>- Liberation Tigers of Tamil Eelam (LTTE): 1604 attacks<br>- Tehrik-i-Taliban Pakistan (TTP): 1350 attacks<br></div>`)[0];
+                popup_ce79d3ef58987fe3153a0e65ce28017f.setContent(html_7c338f371f8eb8d8c5c86358c5fcfebf);
+            
+        
+
+        marker_0309928ea5aa3bbe1d006bfec5db7aca.bindPopup(popup_ce79d3ef58987fe3153a0e65ce28017f)
+        ;
+
+        
+    
+    
+            var marker_9b7701c25aa82eaaa1414cb686428c15 = L.marker(
+                [13.7563, 100.5018],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_c72dfd74a421e6331be7eecf68cfdbbc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9b7701c25aa82eaaa1414cb686428c15.setIcon(icon_c72dfd74a421e6331be7eecf68cfdbbc);
+        
+    
+        var popup_ec1f64f6b74323e5877e231b3fd102f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64228c27078e7d6ab3ff38f766a56e9a = $(`<div id="html_64228c27078e7d6ab3ff38f766a56e9a" style="width: 100.0%; height: 100.0%;"><b>Southeast Asia</b><br>Top Groups:<br>- New People's Army (NPA): 2770 attacks<br>- Abu Sayyaf Group (ASG): 527 attacks<br>- Bangsamoro Islamic Freedom Movement (BIFM): 391 attacks<br>- Moro Islamic Liberation Front (MILF): 366 attacks<br>- Separatists: 335 attacks<br></div>`)[0];
+                popup_ec1f64f6b74323e5877e231b3fd102f7.setContent(html_64228c27078e7d6ab3ff38f766a56e9a);
+            
+        
+
+        marker_9b7701c25aa82eaaa1414cb686428c15.bindPopup(popup_ec1f64f6b74323e5877e231b3fd102f7)
+        ;
+
+        
+    
+    
+            var marker_c81f4907d875c7d1d1449e93b1e4664c = L.marker(
+                [-8.7832, 34.5085],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_b76540c05b188f20a524a6e6f1da34e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c81f4907d875c7d1d1449e93b1e4664c.setIcon(icon_b76540c05b188f20a524a6e6f1da34e4);
+        
+    
+        var popup_bc610d25dee8b52847a7f5f92128a256 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_80b8c06fab1abdf628b57dca82f4661a = $(`<div id="html_80b8c06fab1abdf628b57dca82f4661a" style="width: 100.0%; height: 100.0%;"><b>Sub-Saharan Africa</b><br>Top Groups:<br>- Al-Shabaab: 3288 attacks<br>- Boko Haram: 2418 attacks<br>- African National Congress (South Africa): 606 attacks<br>- Fulani extremists: 511 attacks<br>- National Union for the Total Independence of Angola (UNITA): 432 attacks<br></div>`)[0];
+                popup_bc610d25dee8b52847a7f5f92128a256.setContent(html_80b8c06fab1abdf628b57dca82f4661a);
+            
+        
+
+        marker_c81f4907d875c7d1d1449e93b1e4664c.bindPopup(popup_bc610d25dee8b52847a7f5f92128a256)
+        ;
+
+        
+    
+    
+            var marker_c4d7650158096216fe0690eb8270ee3c = L.marker(
+                [48.8566, 2.3522],
+                {
+}
+            ).addTo(map_661e913f5a009e8a3bf532e8fe971bdb);
+        
+    
+            var icon_e3f7d65a3de61111da6459105969ca37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c4d7650158096216fe0690eb8270ee3c.setIcon(icon_e3f7d65a3de61111da6459105969ca37);
+        
+    
+        var popup_3950713e699dff7203900c0a80e3897c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5836ae3c68815bd05fc61ab459317f57 = $(`<div id="html_5836ae3c68815bd05fc61ab459317f57" style="width: 100.0%; height: 100.0%;"><b>Western Europe</b><br>Top Groups:<br>- Irish Republican Army (IRA): 2668 attacks<br>- Basque Fatherland and Freedom (ETA): 2022 attacks<br>- Corsican National Liberation Front (FLNC): 639 attacks<br>- Protestant extremists: 333 attacks<br>- Ulster Volunteer Force (UVF): 270 attacks<br></div>`)[0];
+                popup_3950713e699dff7203900c0a80e3897c.setContent(html_5836ae3c68815bd05fc61ab459317f57);
+            
+        
+
+        marker_c4d7650158096216fe0690eb8270ee3c.bindPopup(popup_3950713e699dff7203900c0a80e3897c)
+        ;
+
+        
+    
+</script>
+</html>
