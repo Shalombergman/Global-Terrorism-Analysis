@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c7448c982b67011bd2d6b6f099283d2d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c7448c982b67011bd2d6b6f099283d2d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c7448c982b67011bd2d6b6f099283d2d = L.map(
+                "map_c7448c982b67011bd2d6b6f099283d2d",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9364b1007e42e652a9026464036ffa1b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9364b1007e42e652a9026464036ffa1b.addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var marker_fce1d5bbbfb3ac48b63682924a8ea380 = L.marker(
+                [-1.427008, 28.073896],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_dde1b84581e3aea755510e29bac8860d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fce1d5bbbfb3ac48b63682924a8ea380.setIcon(icon_dde1b84581e3aea755510e29bac8860d);
+        
+    
+        var popup_ada9d659826957a62a21bfaaca691066 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d8c2b210fe96dac180dec63b1d315332 = $(`<div id="html_d8c2b210fe96dac180dec63b1d315332" style="width: 100.0%; height: 100.0%;">                     <b>Sub-Saharan Africa</b><br>                     Events: 8<br>                     Casualties: 108<br>                     Avg Casualties/Event: 13.50<br>                     Correlation Score: 13.50                 </div>`)[0];
+                popup_ada9d659826957a62a21bfaaca691066.setContent(html_d8c2b210fe96dac180dec63b1d315332);
+            
+        
+
+        marker_fce1d5bbbfb3ac48b63682924a8ea380.bindPopup(popup_ada9d659826957a62a21bfaaca691066)
+        ;
+
+        
+    
+    
+            var marker_9b6c4dffa3d75d841bca059280f5087d = L.marker(
+                [32.715364, 69.281948],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_8c4e57ed1b3c6403041601ed7587abad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9b6c4dffa3d75d841bca059280f5087d.setIcon(icon_8c4e57ed1b3c6403041601ed7587abad);
+        
+    
+        var popup_71458cca4992ac799394b99eaca32013 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7f91a12c31ad1927b201406ad438dfd2 = $(`<div id="html_7f91a12c31ad1927b201406ad438dfd2" style="width: 100.0%; height: 100.0%;">                     <b>South Asia</b><br>                     Events: 8<br>                     Casualties: 157<br>                     Avg Casualties/Event: 19.62<br>                     Correlation Score: 19.62                 </div>`)[0];
+                popup_71458cca4992ac799394b99eaca32013.setContent(html_7f91a12c31ad1927b201406ad438dfd2);
+            
+        
+
+        marker_9b6c4dffa3d75d841bca059280f5087d.bindPopup(popup_71458cca4992ac799394b99eaca32013)
+        ;
+
+        
+    
+    
+            var marker_6bfaafac15281fb0fdcd3f62a6a1983e = L.marker(
+                [36.303611, 43.412778],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_fa0d8901cf23a85dece8328d5885af61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_6bfaafac15281fb0fdcd3f62a6a1983e.setIcon(icon_fa0d8901cf23a85dece8328d5885af61);
+        
+    
+        var popup_b8387b892d791ed31513acca9049585f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e828f9607b723b7971c08b9f4f5241af = $(`<div id="html_e828f9607b723b7971c08b9f4f5241af" style="width: 100.0%; height: 100.0%;">                     <b>Middle East & North Africa</b><br>                     Events: 1<br>                     Casualties: 0<br>                     Avg Casualties/Event: 0.00<br>                     Correlation Score: 0.00                 </div>`)[0];
+                popup_b8387b892d791ed31513acca9049585f.setContent(html_e828f9607b723b7971c08b9f4f5241af);
+            
+        
+
+        marker_6bfaafac15281fb0fdcd3f62a6a1983e.bindPopup(popup_b8387b892d791ed31513acca9049585f)
+        ;
+
+        
+    
+    
+            var marker_e58655376eeaedd81cf28d249a2bc585 = L.marker(
+                [42.005007, 8.920081],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_6da819877a85f237fa638ef9203bc38e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e58655376eeaedd81cf28d249a2bc585.setIcon(icon_6da819877a85f237fa638ef9203bc38e);
+        
+    
+        var popup_62719640292db42ea6c0ab3033d34fb3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d32ea0eed4105eeb63330860674bf7e = $(`<div id="html_5d32ea0eed4105eeb63330860674bf7e" style="width: 100.0%; height: 100.0%;">                     <b>Western Europe</b><br>                     Events: 2<br>                     Casualties: 0<br>                     Avg Casualties/Event: 0.00<br>                     Correlation Score: 0.00                 </div>`)[0];
+                popup_62719640292db42ea6c0ab3033d34fb3.setContent(html_5d32ea0eed4105eeb63330860674bf7e);
+            
+        
+
+        marker_e58655376eeaedd81cf28d249a2bc585.bindPopup(popup_62719640292db42ea6c0ab3033d34fb3)
+        ;
+
+        
+    
+    
+            var marker_f0aa7014f61b4d598ec0a64df5107a1e = L.marker(
+                [7.602987, 125.96642],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_f0ddc3fc589f82faf312b65d5014f842 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f0aa7014f61b4d598ec0a64df5107a1e.setIcon(icon_f0ddc3fc589f82faf312b65d5014f842);
+        
+    
+        var popup_ea24630b495ff0c5ec2f6257de92eddf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b04b3495acb67a9b155437cb46dd094 = $(`<div id="html_4b04b3495acb67a9b155437cb46dd094" style="width: 100.0%; height: 100.0%;">                     <b>Southeast Asia</b><br>                     Events: 5<br>                     Casualties: 14<br>                     Avg Casualties/Event: 2.80<br>                     Correlation Score: 2.80                 </div>`)[0];
+                popup_ea24630b495ff0c5ec2f6257de92eddf.setContent(html_4b04b3495acb67a9b155437cb46dd094);
+            
+        
+
+        marker_f0aa7014f61b4d598ec0a64df5107a1e.bindPopup(popup_ea24630b495ff0c5ec2f6257de92eddf)
+        ;
+
+        
+    
+    
+            var marker_fd57b8e94a437446f9dabf63c6996f6f = L.marker(
+                [-2.530731, -44.306826],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_57bae85775ced61db2e24f25428b7e79 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fd57b8e94a437446f9dabf63c6996f6f.setIcon(icon_57bae85775ced61db2e24f25428b7e79);
+        
+    
+        var popup_cbf2384d39dfa7bd541b870ae32de5f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da3849c48d1a357ae72e2a35649e4b49 = $(`<div id="html_da3849c48d1a357ae72e2a35649e4b49" style="width: 100.0%; height: 100.0%;">                     <b>South America</b><br>                     Events: 1<br>                     Casualties: 1<br>                     Avg Casualties/Event: 1.00<br>                     Correlation Score: 1.00                 </div>`)[0];
+                popup_cbf2384d39dfa7bd541b870ae32de5f6.setContent(html_da3849c48d1a357ae72e2a35649e4b49);
+            
+        
+
+        marker_fd57b8e94a437446f9dabf63c6996f6f.bindPopup(popup_cbf2384d39dfa7bd541b870ae32de5f6)
+        ;
+
+        
+    
+    
+            var marker_7a941dd3d50895ad25b04a7039623ddb = L.marker(
+                [44.756944, 19.216111],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_977abeda13a38b84eea01ad850550e85 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7a941dd3d50895ad25b04a7039623ddb.setIcon(icon_977abeda13a38b84eea01ad850550e85);
+        
+    
+        var popup_289723e3cd86c1997cba483c22bc852d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61c16a49d3db34c9f288eff5a7b5f8fc = $(`<div id="html_61c16a49d3db34c9f288eff5a7b5f8fc" style="width: 100.0%; height: 100.0%;">                     <b>Eastern Europe</b><br>                     Events: 6<br>                     Casualties: 1<br>                     Avg Casualties/Event: 0.17<br>                     Correlation Score: 0.17                 </div>`)[0];
+                popup_289723e3cd86c1997cba483c22bc852d.setContent(html_61c16a49d3db34c9f288eff5a7b5f8fc);
+            
+        
+
+        marker_7a941dd3d50895ad25b04a7039623ddb.bindPopup(popup_289723e3cd86c1997cba483c22bc852d)
+        ;
+
+        
+    
+    
+            var marker_8022ec5d3496abbb41f44f1446bf508e = L.marker(
+                [11.788079, -86.014604],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_19bfe17f2850a98323ac5a708347c811 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8022ec5d3496abbb41f44f1446bf508e.setIcon(icon_19bfe17f2850a98323ac5a708347c811);
+        
+    
+        var popup_64e995373689f5f517c7fd0e55c4034e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_197767d2872fe6ad10f3157aebfcddc7 = $(`<div id="html_197767d2872fe6ad10f3157aebfcddc7" style="width: 100.0%; height: 100.0%;">                     <b>Central America & Caribbean</b><br>                     Events: 1<br>                     Casualties: 10<br>                     Avg Casualties/Event: 10.00<br>                     Correlation Score: 10.00                 </div>`)[0];
+                popup_64e995373689f5f517c7fd0e55c4034e.setContent(html_197767d2872fe6ad10f3157aebfcddc7);
+            
+        
+
+        marker_8022ec5d3496abbb41f44f1446bf508e.bindPopup(popup_64e995373689f5f517c7fd0e55c4034e)
+        ;
+
+        
+    
+    
+            var marker_da9e82e1b79db8a2cea128725afdd813 = L.marker(
+                [38.788097, -90.497479],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_bf08e7a7dfc0c2e15e08c6dcf3622728 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_da9e82e1b79db8a2cea128725afdd813.setIcon(icon_bf08e7a7dfc0c2e15e08c6dcf3622728);
+        
+    
+        var popup_860b7ab4177cd9ec31e783dc00c1b1c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b017fdb631bed8037d3603a99f679e2d = $(`<div id="html_b017fdb631bed8037d3603a99f679e2d" style="width: 100.0%; height: 100.0%;">                     <b>North America</b><br>                     Events: 1<br>                     Casualties: 0<br>                     Avg Casualties/Event: 0.00<br>                     Correlation Score: 0.00                 </div>`)[0];
+                popup_860b7ab4177cd9ec31e783dc00c1b1c0.setContent(html_b017fdb631bed8037d3603a99f679e2d);
+            
+        
+
+        marker_da9e82e1b79db8a2cea128725afdd813.bindPopup(popup_860b7ab4177cd9ec31e783dc00c1b1c0)
+        ;
+
+        
+    
+    
+            var marker_ff2cab6445fe4b0544de02fa3619cecb = L.marker(
+                [-18.1416, 178.4419],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_95c6527ff20d95f3389c9b6a3480f5ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ff2cab6445fe4b0544de02fa3619cecb.setIcon(icon_95c6527ff20d95f3389c9b6a3480f5ea);
+        
+    
+        var popup_9cbda4063c32b1c4347cee7b1eb80b5b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8559f36d702c17533de1cc0caf8a4d31 = $(`<div id="html_8559f36d702c17533de1cc0caf8a4d31" style="width: 100.0%; height: 100.0%;">                     <b>Australasia & Oceania</b><br>                     Events: 8<br>                     Casualties: 25<br>                     Avg Casualties/Event: 3.12<br>                     Correlation Score: 3.12                 </div>`)[0];
+                popup_9cbda4063c32b1c4347cee7b1eb80b5b.setContent(html_8559f36d702c17533de1cc0caf8a4d31);
+            
+        
+
+        marker_ff2cab6445fe4b0544de02fa3619cecb.bindPopup(popup_9cbda4063c32b1c4347cee7b1eb80b5b)
+        ;
+
+        
+    
+    
+            var marker_1841275a2ba03344c6820f8ec6e4f91c = L.marker(
+                [35.607221, 140.10627],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_dbfe01443553c483b9188fee1f475423 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1841275a2ba03344c6820f8ec6e4f91c.setIcon(icon_dbfe01443553c483b9188fee1f475423);
+        
+    
+        var popup_5c05cce8dd0430cce66ff286ae50a056 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9bfaeca6a9ffe0897dfa98e4d7e95b26 = $(`<div id="html_9bfaeca6a9ffe0897dfa98e4d7e95b26" style="width: 100.0%; height: 100.0%;">                     <b>East Asia</b><br>                     Events: 6<br>                     Casualties: 0<br>                     Avg Casualties/Event: 0.00<br>                     Correlation Score: 0.00                 </div>`)[0];
+                popup_5c05cce8dd0430cce66ff286ae50a056.setContent(html_9bfaeca6a9ffe0897dfa98e4d7e95b26);
+            
+        
+
+        marker_1841275a2ba03344c6820f8ec6e4f91c.bindPopup(popup_5c05cce8dd0430cce66ff286ae50a056)
+        ;
+
+        
+    
+    
+            var marker_7c8347352245611d5936940dd9a63753 = L.marker(
+                [38.902222, 46.238333],
+                {
+}
+            ).addTo(map_c7448c982b67011bd2d6b6f099283d2d);
+        
+    
+            var icon_baff8d9837fa0c85a9ec634fd543e434 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7c8347352245611d5936940dd9a63753.setIcon(icon_baff8d9837fa0c85a9ec634fd543e434);
+        
+    
+        var popup_b6148cb575824c13e9e46d44133b08f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b37ee7e131f5a83b6f89f5aee40067b = $(`<div id="html_8b37ee7e131f5a83b6f89f5aee40067b" style="width: 100.0%; height: 100.0%;">                     <b>Central Asia</b><br>                     Events: 1<br>                     Casualties: 0<br>                     Avg Casualties/Event: 0.00<br>                     Correlation Score: 0.00                 </div>`)[0];
+                popup_b6148cb575824c13e9e46d44133b08f7.setContent(html_8b37ee7e131f5a83b6f89f5aee40067b);
+            
+        
+
+        marker_7c8347352245611d5936940dd9a63753.bindPopup(popup_b6148cb575824c13e9e46d44133b08f7)
+        ;
+
+        
+    
+</script>
+</html>
