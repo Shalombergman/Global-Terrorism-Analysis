@@ -1,6 +1,11 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime, Boolean, ForeignKey, Table, MetaData
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from src.db.models.base import Base
+from src.db.models.regions import Region
+from src.db.models.groups import Group
+from src.db.models.attack_types import AttackType
+from src.db.models.targets import Target
+from src.db.models.weapon_types import WeaponType
 
 
 class TerrorEvent(Base):
@@ -18,6 +23,7 @@ class TerrorEvent(Base):
     summary = Column(String)
     motive = Column(String)
     num_perpetrators = Column(Integer)
+
     region = relationship("Region", back_populates="events")
     group = relationship("Group", back_populates="events")
     attack_type = relationship("AttackType", back_populates="events")
