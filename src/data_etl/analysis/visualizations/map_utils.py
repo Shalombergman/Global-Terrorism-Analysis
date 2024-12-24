@@ -4,21 +4,15 @@ from typing import Dict, Any, List
 import math
 
 def create_severity_map(severity_results: List) -> folium.Map:
-    print("\nDebugging Severity Map Data:")
-    print("Number of results:", len(severity_results))
-    
     m = folium.Map(location=[20, 0], zoom_start=2)
-    
     values = []
     for r in severity_results:
-        print(f"Region: {r.name}, Lat: {r.latitude}, Lng: {r.longitude}, Score: {r.avg_severity_score_per_event}")
         try:
             if r.avg_severity_score_per_event is not None:
                 values.append(float(r.avg_severity_score_per_event))
         except (ValueError, AttributeError) as e:
             print(f"Error with {r.name}: {e}")
             continue
-    
     print("Valid values:", len(values))
     
     if not values:
@@ -52,20 +46,13 @@ def create_severity_map(severity_results: List) -> folium.Map:
             print(f"Error adding marker for {r.name}: {e}")
             continue
     
-    print(f"Total markers added: {markers_added}")
     colormap.add_to(m)
     return m
 
 def create_active_groups_map(groups_data: Dict[str, Any]) -> folium.Map:
-    print("\nDebugging Active Groups Map Data:")
-    print("Number of regions:", len(groups_data))
-    
     m = folium.Map(location=[20, 0], zoom_start=2)
-    
     markers_added = 0
     for region, data in groups_data.items():
-        print(f"Processing {region}:")
-        print(f"Location: {data['location']}")
         try:
             lat = float(data['location']['lat'])
             lng = float(data['location']['lng'])
@@ -85,20 +72,12 @@ def create_active_groups_map(groups_data: Dict[str, Any]) -> folium.Map:
             print(f"Error adding marker for {region}: {e}")
             continue
     
-    print(f"Total markers added: {markers_added}")
     return m
 
 def create_correlation_map(correlation_data: Dict[str, Any]) -> folium.Map:
-    print("\nDebugging Correlation Map Data:")
-    print("Number of regions:", len(correlation_data))
-    
     m = folium.Map(location=[20, 0], zoom_start=2)
-    
     values = []
     for region, data in correlation_data.items():
-        print(f"Processing {region}:")
-        print(f"Location: {data['location']}")
-        print(f"Stats: {data['stats']}")
         try:
             score = data['stats']['correlation_score']
             if not math.isnan(score):

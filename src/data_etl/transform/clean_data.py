@@ -43,7 +43,6 @@ def clean_terrorism_data(df):
                    'Target', 'Group', 'Summary', 'Motive', 'Target_type', 'Weapon_type']
     for col in text_columns:
         cleaned_df[col] = cleaned_df[col].fillna('Unknown')
-    
 
     
     return cleaned_df

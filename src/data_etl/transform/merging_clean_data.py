@@ -8,9 +8,7 @@ from src.db.models.weapon_types import WeaponType
 from src.db.models.attack_types import AttackType
 
 def merge_rand_data(session: Session, rand_csv_path: str):
-   
     df = pd.read_csv(rand_csv_path, encoding='latin1')
-    
     df['Date'] = pd.to_datetime(df['Date'], format='%d-%b-%y', errors='coerce')
     df['eventid'] = [f"RAND_{str(uuid4())[:8]}" for _ in range(len(df))]
     

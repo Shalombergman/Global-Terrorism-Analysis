@@ -1,16 +1,10 @@
-from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 from src.db.models.attack_types import AttackType
 from src.db.models.groups import Group
 from src.db.models.regions import Region
 from src.db.models.terror_events import TerrorEvent
-from src.data_etl.analysis.visualizations.map_utils import (
-    create_severity_map,
-    create_active_groups_map,
-    create_correlation_map
-)
+
 from dataclasses import dataclass
-from typing import Optional
 import numpy as np
 
 
@@ -35,10 +29,8 @@ def get_top_attack_types(session, limit=None) -> list:
         .group_by(AttackType.name)
         .order_by(desc('severity_score'))
     )
-
     if limit:
         query = query.limit(limit)
-
     return query.all()
 
 
@@ -57,7 +49,6 @@ def get_region_severity_stats(session, limit=None):
         'Australasia & Oceania': (-25.2744, 133.7751),
         'Western Europe': (48.8566, 2.3522)
     }
-
     severity_score = (func.coalesce(TerrorEvent.killed, 0) * 2 + 
                      func.coalesce(TerrorEvent.wounded, 0))
     
@@ -136,7 +127,6 @@ def get_most_active_groups_by_region(session, region_name=None, limit=5):
         .group_by(Region.name, Group.name)
         .order_by(Region.name, desc('attack_count'))
     )
-
     results = query.all()
 
     grouped_results = {}
@@ -157,7 +147,6 @@ def get_most_active_groups_by_region(session, region_name=None, limit=5):
 
 
 def get_region_correlation_stats(session, region_name=None):
-    # מילון קואורדינטות קבועות לכל אזור
     REGION_COORDINATES = {
         'East Asia': (35.8617, 104.1954),
         'Sub-Saharan Africa': (-8.7832, 34.5085),
@@ -198,7 +187,7 @@ def get_region_correlation_stats(session, region_name=None):
 
     for r in results:
         lat, lng = REGION_COORDINATES.get(r.region_name, (None, None))
-        if lat and lng:  # רק אם יש קואורדינטות תקינות
+        if lat and lng:
             event_numbers = list(range(len(r.casualties_per_event)))
             casualties = [float(x) for x in r.casualties_per_event]
 
@@ -220,88 +209,3 @@ def get_region_correlation_stats(session, region_name=None):
             }
 
     return correlation_data
-# if __name__ == "__main__":
-#     from src.config.settings import get_settings
-#     from sqlalchemy import create_engine
-#     from sqlalchemy.orm import sessionmaker
-
-#     settings = get_settings()
-#     engine = create_engine(settings.POSTGRES_URL)
-#     Session = sessionmaker(bind=engine)
-#     session = Session()
-
-#     results = get_top_attack_types(session, limit=5)
-#     print("\nTop 5 Most Severe Attack Types:")
-#     print("--------------------------------")
-#     for r in results:
-#         print(f"Attack Type: {r.name}")
-#         print(f"Total Attacks: {r.total_attacks}")
-#         print(f"Total Killed: {r.total_killed or 'No Data'}")
-#         print(f"Total Wounded: {r.total_wounded or 'No Data'}")
-#         print(f"Severity Score: {r.severity_score}")
-#         print("--------------------------------")
-#
-#     avg_results = get_region_severity_stats(session, limit=5)
-#     print("\nTop Locations by Average Severity:")
-#     print("------------------------------------")
-#     for r in avg_results:
-#         print(f"Region: {r.name}")
-#         print(f"Total Attacks: {r.total_attacks}")
-#         print(f"Avg Severity Score: {r.avg_severity_score_per_event:.2f}")
-#         print("--------------------------------")
-#
-#     results = get_deadliest_groups(session, limit=5)
-#     print("\nTop 5 Deadliest Terror Groups:")
-#     print("--------------------------------")
-#     for r in results:
-#         print(f"Group: {r.group_name}")
-#         print(f"Total Attacks: {r.total_attacks}")
-#         print(f"Total Casualties: {r.total_casualties}")
-#         print("--------------------------------")
-#
-#     results = get_most_active_groups_by_region(session)
-#
-#     middle_east_results = get_most_active_groups_by_region(session, region_name="Middle East & North Africa")
-#
-#     for region, data in results.items():
-#         print(f"\nRegion: {region}")
-#         print(f"Location: ({data['location']['lat']}, {data['location']['lng']})")
-#         print("Top Active Groups:")
-#         for group in data['top_groups']:
-#             print(f"- {group['group_name']}: {group['attack_count']} attacks")
-#
-#
-    # all_correlations = get_region_correlation_stats(session)
-    # print("\nRegion Correlation Stats:")
-    # print("--------------------------------")
-    # for region, data in all_correlations.items():
-    #     print(f"Region: {region}")
-    #     print(f"Total Events: {data['stats']['total_events']}")
-    #     print(f"Total Casualties: {data['stats']['total_casualties']}")
-    #     print(f"Avg Casualties per Event: {data['stats']['avg_casualties']:.2f}")
-    #     print(f"Correlation Score: {data['stats']['correlation_score']:.2f}")
-    #     print("--------------------------------")
-
-
-
-#
-#
-#     print("\nCreating maps...")
-#
-#     # מפת חומרה
-#     severity_results = get_region_severity_stats(session)
-#     severity_map = create_severity_map(severity_results)
-#     severity_map.save('severity_map.html')
-#     print("Severity map saved as 'severity_map.html'")
-#
-#     groups_results = get_most_active_groups_by_region(session)
-#     groups_map = create_active_groups_map(groups_results)
-#     groups_map.save('active_groups_map.html')
-#     print("Active groups map saved as 'active_groups_map.html'")
-#
-#     correlation_results = get_region_correlation_stats(session)
-#     correlation_map = create_correlation_map(correlation_results)
-#     correlation_map.save('correlation_map.html')
-#     print("Correlation map saved as 'correlation_map.html'")
-
-        # session.close()

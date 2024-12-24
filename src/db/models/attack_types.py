@@ -8,5 +8,4 @@ class AttackType(Base):
     
     id = Column(Integer, primary_key=True)
     name = Column(String, unique=True, nullable=False)
-    
     events = relationship("TerrorEvent", back_populates="attack_type")

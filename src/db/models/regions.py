@@ -13,5 +13,4 @@ class Region(Base):
     city = Column(String)
     latitude = Column(Float)
     longitude = Column(Float)
-    
     events = relationship("TerrorEvent", back_populates="region")
