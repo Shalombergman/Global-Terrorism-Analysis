@@ -54,7 +54,6 @@ class NewsAnalyzer:
         self.es.indices.create(index='news_events', body=news_mapping)
 
     def fetch_news(self, page=1):
-        """משיכת חדשות מהדוקר בפורמט דומה ל-queries1"""
         try:
             url = self.api_url
             print(f"Trying to fetch from: {url}")
@@ -112,7 +111,7 @@ class NewsAnalyzer:
             return []
 
     def classify_news(self, text):
-        """סיווג חדשות באמצעות GroqAPI"""
+        '''groq nlp classification'''
         prompt = f"""Classify the following news text into one of these categories:
         1. General News
         2. Historical Terror Event
@@ -120,22 +119,29 @@ class NewsAnalyzer:
         
         Text: {text}
         
-        Return only the category number."""
+        Return ONLY the number (1, 2, or 3) without any additional text."""
         
         response = self.groq_client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
             model="mixtral-8x7b-32768"
         )
-        return int(response.choices[0].message.content.strip())
+        
+        try:
+            result = response.choices[0].message.content.strip()
+            number = ''.join(filter(str.isdigit, result))
+            return int(number)
+        except Exception as e:
+            print(f"Error parsing classification result: {result}")
+            return 1  # default to general news
 
     def extract_location(self, text):
-        """חילוץ מיקום באמצעות GroqAPI וקבלת פרטים מ-OpenCage"""
+        """Extract location from text using Groq and OpenCage Geocoding API"""
         try:
-            # קבלת המיקום מ-GroqAPI
+            '''groq nlp location extraction'''
             prompt = f"""Extract the location (city, country, region) from this text:
             {text}
             Return only the most relevant location name."""
-            
+
             response = self.groq_client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
                 model="mixtral-8x7b-32768"
@@ -186,7 +192,7 @@ class NewsAnalyzer:
             return None
 
     def process_article(self, article):
-        """עיבוד כתבה בודדת - שמירה בדיוק כמו שמגיע מהדוקר"""
+        '''Process article data for storage in Elasticsearch'''
         try:
             date = article.get('dateTime', None)
             date_pub = article.get('dateTimePub', None)
@@ -238,34 +244,42 @@ class NewsAnalyzer:
             return total_processed
 
     def get_news_analysis(self):
+        '''Analyze stored news articles for terror'''
         try:
             query = {
-                "size": 1,
+                "size": 10,
                 "_source": ["title", "body", "dateTimePub", "source.title"]
             }
             
+            print("Fetching articles from Elasticsearch...")
             results = self.es.search(index='news_events', body=query)
+            terror_events = []
+            total_articles = len(results['hits']['hits'])
             
-            print("\nAnalyzing Terror Events from Elasticsearch:")
-            print("=========================================")
-            
-            for hit in results['hits']['hits']:
+            print(f"\nAnalyzing {total_articles} articles...")
+            for i, hit in enumerate(results['hits']['hits'], 1):
                 article = hit['_source']
+                print(f"\nProcessing article {i}/{total_articles}: {article['title'][:50]}...")
                 
+                print("Classifying article...")
                 news_type = self.classify_news(article['body'])
+                print(f"Classification result: {news_type}")
                 
                 if news_type in [2, 3]:
-                    print(f"\nArticle: {article['title']}")
-                    print(f"Event Type: {'Historical' if news_type == 2 else 'Current'} Terror Event")
-                    
+                    print("Terror event detected, extracting location...")
                     location_data = self.extract_location(article['body'])
                     if location_data:
-                        print("\nLocation Details:")
-                        print(json.dumps(location_data, indent=2, ensure_ascii=False))
-                    print("----------------------------------------")
+                        print(f"Location found: {location_data.get('formatted', 'Unknown')}")
+                        terror_events.append(location_data)
+                    else:
+                        print("No location data found")
+            
+            print(f"\nFound {len(terror_events)} terror events with location data")
+            return terror_events
             
         except Exception as e:
             print(f"Error analyzing news: {e}")
+            return []
 
 def run_news_analyzer(session):
     analyzer = NewsAnalyzer(session)
@@ -286,12 +300,27 @@ if __name__ == "__main__":
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
     from src.config.settings import get_settings
+    import time
     
     settings = get_settings()
     engine = create_engine(settings.POSTGRES_URL)
     Session = sessionmaker(bind=engine)
     session = Session()
-
-
+    
     analyzer = NewsAnalyzer(session)
-    analyzer.get_news_analysis()
+    
+    print("Storing initial news articles...")
+    total_stored = analyzer.analyze_and_store()
+    print(f"Stored {total_stored} articles")
+    
+    time.sleep(1)
+    
+    print("\nGetting news analysis...")
+    terror_events = analyzer.get_news_analysis()
+    
+    if terror_events:
+        print("\nTerror Events Locations:")
+        print(json.dumps(terror_events, indent=2, ensure_ascii=False))
+    else:
+        print("\nNo terror events found in the analyzed articles")
+       
