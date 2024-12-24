@@ -323,4 +323,3 @@ if __name__ == "__main__":
         print(json.dumps(terror_events, indent=2, ensure_ascii=False))
     else:
         print("\nNo terror events found in the analyzed articles")
-       
