@@ -32,7 +32,7 @@ def merge_rand_data(session: Session, rand_csv_path: str):
         'Fire or Firebomb': 'Facility/Infrastructure Attack',
         'Unknown': 'Unknown'
     }
-    
+
     for _, row in df.iterrows():
         region_key = (row['Country'], row['City'])
         if region_key not in existing_regions:
